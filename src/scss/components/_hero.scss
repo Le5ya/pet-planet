@@ -1,19 +1,52 @@
 @use "../variables" as *;
+@use "../media" as *;
 .hero {
   color: $light;
   padding: 200px 0 245px;
   background: $purple;
   background-image: url("/img/bg-dog.png"), url("/img/pattern.svg");
   background-size: contain, cover;
-  background-position: right, center;
+  background-position: right bottom, center;
   background-repeat: no-repeat;
 
+  @include laptop {
+    padding: 148px 0 172px;
+    background-image: url("/img/bg-dog-laptop.png"), url("/img/pattern.svg");
+  }
+  @include tablet {
+    padding: 148px 0 461px;
+    background-size: 665px 564px cover;
+    background-image: url("/img/bg-dog-tablet.png"), url("/img/pattern.svg");
+  }
+  @include mobile {
+    padding: 100px 0 284px;
+    background-size: 294px 261px cover;
+    background-image: url("/img/bg-dog-mobile.png"), url("/img/pattern.svg");
+  }
+
   &__title {
-    max-width: 820px;
+    max-width: 810px;
     margin-bottom: 50px;
+
+    @media (max-width: 1300px) {
+      width: 660px;
+    }
+
+    @include laptop {
+      width: 588px;
+      margin-bottom: 32px;
+    }
+
+    @include mobile {
+      margin-bottom: 16px;
+    }
   }
 
   &__text {
     max-width: 420px;
+
+    @include laptop {
+      max-width: 360px;
+    }
   }
 }
