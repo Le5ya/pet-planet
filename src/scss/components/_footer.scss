@@ -1,4 +1,5 @@
 @use "../variables" as *;
+@use "../media" as *;
 
 .footer {
   padding: 80px 0 32px;
@@ -6,28 +7,64 @@
   color: $light;
   background-image: url("/img/paw.svg");
   background-repeat: no-repeat;
-  background-position: 41vw 70px;
+  background-position: left 41vw bottom -75px;
+  background-size: 375px;
+  @include laptop {
+    padding-top: 50px;
+    background-size: 311px;
+  }
+  @include tablet {
+    padding-top: 40px;
+    background-size: 215px;
+    background-position: right 46px bottom -45px;
+  }
+  @include mobile {
+    padding: 30px 0 24px;
+    background-size: 144px;
+    background-position: left -30px bottom -30px;
+  }
   &__container {
     display: grid;
+    gap: 50px;
     grid-template-areas:
       "logo contacts"
       "info contacts";
+    @include tablet {
+      gap: 82px 30px;
+    }
+    @include mobile {
+      gap: 0;
+      grid-template-areas:
+        "logo"
+        "contacts"
+        "info";
+    }
   }
   &__logo {
     grid-area: logo;
     width: 332px;
+
+    @include tablet {
+      width: 200px;
+    }
+    @include mobile {
+      margin-bottom: 32px;
+    }
   }
   &__info {
     grid-area: info;
+    font-size: 16px;
+
+    @media mobile {
+      font-size: 12px;
+    }
   }
 
   &__copyright {
-    font-size: 16px;
     margin-bottom: 16px;
   }
 
   &__text {
-    font-size: 16px;
     margin-bottom: 3px;
   }
   &__item {
@@ -46,6 +83,11 @@
     grid-area: contacts;
     justify-self: end;
     font-style: normal;
+
+    @include mobile {
+      margin-bottom: 66px;
+      justify-self: start;
+    }
   }
 
   &__email {
